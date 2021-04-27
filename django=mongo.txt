@@ -1,0 +1,11 @@
+mongo uri = mongodb+srv://aniket316:<password>@safecluster1.ggafi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+username = aniket316 / laski007
+password = #aniket316 / qRIPWHSGsbJBTxCk
+ip added = 0.0.0.0, 192.168.1.2
+dbname = project1
+collectionname = tree
+
+
+superuser cred
+username aniket316
+passwork angwalkar316
