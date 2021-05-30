@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* body {
+	margin: 10%;
+	color: rgb(180, 16, 16);
+	background: #c90909;
+	font-family: 'Roboto', sans-serif;
+} */
+
+.navbar {
+    font-family: 'Roboto', sans-serif !important;
+	border: 0;
+	border-radius: 0;
+    background: -webkit-linear-gradient(right, rgb(18, 118, 131), rgb(166, 247, 123)) !important;
+    background-repeat: no-repeat !important;
+    /* linear-gradient(to right, #ff5858, #f857a6); */
+	}
+
+.nav-link:hover{
+    box-shadow: 0px 1px 18px rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    max-height: 50px;
+    width: auto;
+    background: transparent !important;
+    font-size: 18px;
+  }
+
+#nav-colors {
+	background: linear-gradient(to right, #add100, #7b920a) !important;
+}
+
+.navbar-toggle {
+    padding-right: 0;
+    color: indigo !important;
+}
+
+.btn-outline-success{
+    border: none;
+    border-radius: 25;
+    background-color: rgb(255, 255, 255) !important;
+    
+}
+
+.dropdown-item:hover{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px #000000;
+}

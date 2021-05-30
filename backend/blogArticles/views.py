@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Post, Category
@@ -9,7 +9,7 @@ from .serializers import CategorySerializer, PostSerializer
 
 
 class CategoryView(APIView):
-	permission_class = [AllowAny]
+	permission_classes = [AllowAny]
 	def get(self, request, format=None):
 		user_id = request.headers["Authorization"]
 		categories = Category.objects.all()
@@ -33,7 +33,7 @@ class CategoryView(APIView):
 		return Response({"message":"deleted"}, status=status.HTTP_204_NO_CONTENT)
 
 class PostView(APIView):
-	permission_classes = [AllowAny]
+	permission_class = [IsAuthenticated]
 	def get(self, request, format=None):
 		allposts = Post.objects.all()
 		posts = None

@@ -11,3 +11,7 @@ username aniket316
 passwork angwalkar316
 
 pull request to = 'https://github.com/Angst-angwalkar/SafeTree_First/pull/new/master'
+
+
+
+Hentai = ['Redo of Healer', 'Kaifuku Jutsushi no Yarinaoshi', 'Ane wa Yanmama Junyuu-chuu 1']
