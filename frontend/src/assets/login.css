@@ -21,6 +21,25 @@ a {
     margin: 6rem auto 8.1rem auto;
     width: 350px;
   }
+
+  .resetpass{
+    background: #66FCF1;
+    border-radius: 8px;
+    box-shadow: 5px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 380px;
+    margin: 6rem auto 8.1rem auto;
+    width: 350px;
+  }
+
+  .resetpassconf{
+    background: #66FCF1;
+    border-radius: 8px;
+    box-shadow: 5px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 400px;
+    margin: 6rem auto 8.1rem auto;
+    width: 350px;
+  }
+
   #card-content {
     padding: 12px 44px;
   }

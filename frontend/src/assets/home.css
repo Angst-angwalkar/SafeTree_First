@@ -1,4 +1,20 @@
 body {
-    background: -webkit-linear-gradient(bottom, #2265ad, #a6f77b) !important;
-    background-repeat: no-repeat !important;
+    /* background: -webkit-linear-gradient(bottom, #2265ad, #a6f77b) !important;
+    background-repeat: no-repeat !important; */
+
+    /* The image used */
+    background-image: url("./img/background.jpg");
+    /* background-image: url("https://images.unsplash.com/photo-1607169195975-db3a7f42fc34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80"); */
+
+    /* Add the blur effect */
+    /* filter: blur(8px);
+    -webkit-filter: blur(8px); */
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }

@@ -13,7 +13,9 @@ const Layout = (props) => {
     return(
         <div>
             <Navbar />
+            <section style={{margin:'0px', padding:'0px'}} className='main'>
             {props.children}
+            </section>
         </div>
         );
 }

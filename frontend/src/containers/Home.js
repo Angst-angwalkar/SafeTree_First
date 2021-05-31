@@ -11,7 +11,7 @@ const Home = () => (
         <title>Card</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
-        <div class="container mt-5">
+        <div class="container mt-5 col-lg-4 col-md-5 col-sm-12 p-4 shadow-lg bg-white" style={{borderRadius:'17px'}}>
         <h1 class="display-4">SafeTree First</h1>
         <p class="lead">Welcome to SafeTree First Blog!</p>
         <br></br>
