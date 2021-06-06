@@ -33,7 +33,7 @@ class CategoryView(APIView):
 		return Response({"message":"deleted"}, status=status.HTTP_204_NO_CONTENT)
 
 class PostView(APIView):
-	permission_class = [IsAuthenticated]
+	permission_classes = [IsAuthenticated]
 	def get(self, request, format=None):
 		allposts = Post.objects.all()
 		posts = None

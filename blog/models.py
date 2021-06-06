@@ -1,42 +1,56 @@
-from djongo import models
-from django.contrib.auth.models import User
-from django.utils import timezone
-from django.conf import settings
-
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
+from django.db import models
+from datetime import datetime
+from django.db.models.fields import SlugField
+from django.template.defaultfilters import slugify
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
-class Post(models.Model):
-    class PostObjects(models.Manager):
-        def get_queryset(self):
-            return super().get_queryset() .filter(status='published')
+class Categories(models.TextChoices):
+    WORLD = 'world'
+    ENVIRONMENT = 'environment'
+    TREES = 'trees'
+    CLIMATE = 'climate'
+    SURVEYS = 'surveys'
+    DRIVES = 'drives'
+    FORESTATION = 'forestation'
+    DIY = 'diy'
 
-    options = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-    )
-
-    category = models.ForeignKey(
-        Category, on_delete=models.PROTECT, default=1)
-    title = models.CharField(max_length=250)
-    excerpt = models.TextField(null=True)
+class BlogPost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    slug = models.SlugField()
+    category = models.CharField(max_length=50, choices=Categories.choices, default=Categories.WORLD)
+    thumbnail = models.ImageField(upload_to='photos/%Y/%m%d')
+    excerpt = models.CharField(max_length=150)
+    month = models.CharField(max_length=3)
+    day = models.CharField(max_length=10)
     content = models.TextField()
-    slug = models.SlugField(max_length=250, unique_for_date='published')
-    published = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_posts')
-    status = models.CharField(
-        max_length=10, choices=options, default='published')
+    featured = models.BooleanField(default=False)
+    date_created = models.DateTimeField(default=datetime.now, blank=True)
 
-    objects = models.Manager() #default manager
-    postobjects = PostObjects() #custom manager
+    def save(self, *args, **kwargs):
+        original_slug = slugify(self.title)
+        queryset = BlogPost.objects.all().filter(slug__iexact=original_slug).count()
 
-    class Meta:
-        ordering = ('-published',)
+        count = 1
+        slug = original_slug
+        while(queryset):
+            slug = original_slug + "-" + str(count)
+            queryset = BlogPost.objects.all().filter(slug__iexact=slug).count()
 
+        self.slug = slug
+
+        if self.featured:
+            try:
+                temp = BlogPost.objects.get(featured=True)
+                if self != temp:
+                    temp.featured = False
+                    temp.save()
+            except BlogPost.DoesNotExist:
+                pass
+
+        super(BlogPost, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.title

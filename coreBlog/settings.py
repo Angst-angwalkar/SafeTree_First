@@ -42,14 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'blog',
-    'blog_api',
     'blogArticles',
     'accounts',
     'rest_framework',
     'djoser',
+    'blog',
+    'TreeSurveyApp'
 
-    
 ]
 
 MIDDLEWARE = [
@@ -70,6 +69,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'build'), os.path.join(BASE_DIR, 'staticfiles')],
+        #'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -157,13 +157,14 @@ MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': {
-        'rest_Framework.permissions.IsAuthenticated'
+        'rest_Framework.permissions.'
     },
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ),
 }
 
@@ -201,5 +202,6 @@ DJOSER = {
     }
 
 }
+
 
 AUTH_USER_MODEL = 'accounts.UserAccount'

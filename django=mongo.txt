@@ -14,4 +14,4 @@ pull request to = 'https://github.com/Angst-angwalkar/SafeTree_First/pull/new/ma
 
 
 
-Hentai = ['Redo of Healer', 'Kaifuku Jutsushi no Yarinaoshi', 'Ane wa Yanmama Junyuu-chuu 1']
+Hentai = ['Redo of Healer, English: Kaifuku Jutsushi no Yarinaoshi', 'Ane wa Yanmama Junyuu-chuu 1']

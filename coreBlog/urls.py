@@ -16,15 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/survey/', include('TreeSurveyApp.urls')),
+    path('api/blog/', include('blog.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('', include('blog.urls', namespace='blog')),
-    path('api/', include('blog_api.urls', namespace='blog_api')),
     path('test/', include('blogArticles.urls'), name="test"),
     path('accounts/', include('accounts.urls'), name="accounts"),
-]
+    path('api-auth/', include('rest_framework.urls')),
+    path('', TemplateView.as_view(template_name="index.html")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name="index.html"))]
+
+# urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name="index.html"))]

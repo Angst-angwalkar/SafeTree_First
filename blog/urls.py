@@ -1,8 +1,11 @@
 from django.urls import path
-from django.views.generic import TemplateView
+from django.urls.resolvers import URLPattern
+from .views import BlogPostListView, BlogPostFeaturedView, BlogPostDetailView, BlogPostCategoryView
 
-app_name = 'blog'
 
 urlpatterns = [
-    # path('', TemplateView.as_view(template_name="blog/index.html"))
+    path('bloglist/', BlogPostListView.as_view()),
+    path('category/', BlogPostCategoryView.as_view()),
+    path('featured/', BlogPostDetailView.as_view()),
+    path('<slug>', BlogPostFeaturedView.as_view())
 ]
